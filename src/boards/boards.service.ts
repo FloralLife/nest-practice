@@ -20,6 +20,11 @@ export class BoardsService {
     return result;
   }
 
+  async deleteBoard(id: number): Promise<void> {
+    const result = await this.boardRepository.delete(id);
+    if (result.affected === 0) throw new NotFoundException(`Can't find Board with id ${id}`);
+  }
+
   // private boards: Board[] = [];
   // getAllBoards(): Board[] {
   //   return this.boards;
