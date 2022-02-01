@@ -32,6 +32,12 @@ export class BoardsController {
   // getAllBoard(): Board[] {
   //   return this.boardsService.getAllBoards();
   // }
+
+  @Get('/my')
+  getMyBoard(@GetUser() user: User): Promise<Board[]> {
+    return this.boardsService.getSomeoneBoards(user.id);
+  }
+
   @Get('/user/:userId')
   getSomeoneBoards(@Param('userId', ParseIntPipe) userId: number) {
     return this.boardsService.getSomeoneBoards(userId);
