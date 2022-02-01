@@ -32,6 +32,10 @@ export class BoardsController {
   // getAllBoard(): Board[] {
   //   return this.boardsService.getAllBoards();
   // }
+  @Get('/user/:userId')
+  getSomeoneBoards(@Param('userId', ParseIntPipe) userId: number) {
+    return this.boardsService.getSomeoneBoards(userId);
+  }
 
   @Post('/')
   @UsePipes(ValidationPipe)
